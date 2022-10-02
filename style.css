@@ -1,18 +1,21 @@
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
+:root {
+  font-size: 21px;
+}
+
+html {
+  text-align: justify;
+}
+
 h1,
+h2,
 h3 {
   break-before: page;
 }
 
 p {
-  line-height: 1em;
-}
-
-br {
-  margin-bottom: 0.5em;
-  display: block;
-  content: '';
+  line-height: 1.6em;
 }
 
 .footnotes {

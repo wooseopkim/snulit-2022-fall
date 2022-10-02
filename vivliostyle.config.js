@@ -9,7 +9,7 @@ const vivliostyleConfig = {
   author: '서울대학교 총문학연구회', // default to 'author' in 'package.json' or undefined
   language: 'ko',
   // readingProgression: 'rtl', // reading progression direction, 'ltr' or 'rtl'.
-  size: 'A4',
+  size: 'A5',
   theme: 'style.css', // .css or local dir or npm package. default to undefined
   image: 'ghcr.io/vivliostyle/cli:5.6.2',
   // entry: [ // **required field**
@@ -60,7 +60,7 @@ const vivliostyleConfig = {
   toc: false, // whether generate and include ToC HTML or not, default to 'false'.
   // cover: './cover.png', // cover image. default to undefined.
   vfm: { // options of VFM processor
-   replace: [ // specify replace handlers to modify HTML outputs
+    replace: [ // specify replace handlers to modify HTML outputs
   //     {
   //       // This handler replaces {current_time} to a current local time tag.
   //       test: /{current_time}/,
