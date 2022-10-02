@@ -1,0 +1,31 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+h1,
+h3 {
+  break-before: page;
+}
+
+p {
+  line-height: 1em;
+}
+
+br {
+  margin-bottom: 0.5em;
+  display: block;
+  content: '';
+}
+
+.footnotes {
+  float: footnote;
+}
+
+@media print {
+  .footnote-ref {
+    text-decoration: none;
+    color: inherit;
+}
+
+  .footnote-back {
+    visibility: hidden;
+  }
+}
