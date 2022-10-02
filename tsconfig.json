@@ -2,8 +2,5 @@
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitAny": true
-  },
-  "files": [
-    "scripts/*.ts"
-  ]
+  }
 }
