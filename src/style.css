@@ -8,6 +8,14 @@ html {
   text-align: justify;
 }
 
+title {
+  string-set: doc-title content();
+}
+
+meta[name=author] {
+  string-set: doc-author attr(content);
+}
+
 h1,
 h2,
 h3 {
@@ -59,7 +67,7 @@ section.level3 > div > p {
 
   @page :left {
     @bottom-left {
-      content: counter(p);
+      content: string(doc-author) '-' string(doc-title);
     }
   }
   

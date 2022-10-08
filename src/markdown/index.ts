@@ -33,7 +33,11 @@ for (const { path } of config.entry) {
       ...(originalMetadata.meta ?? []),
       [
         {
-          name: 'author',
+          name: 'name',
+          value: 'author',
+        },
+        {
+          name: 'content',
           value: /([^/]+)\/[^/]+\.\w+/.exec(path)?.[1] ?? '',
         },
       ],
