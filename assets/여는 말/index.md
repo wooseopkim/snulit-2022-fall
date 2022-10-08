@@ -1,4 +1,6 @@
 ---
+# Number.MIN_SAFE_INTEGER
+priority: -9007199254740991
 body:
   class: poem
 ---
