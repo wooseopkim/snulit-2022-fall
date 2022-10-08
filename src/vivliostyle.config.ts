@@ -1,4 +1,5 @@
 import { ArticleEntryObject } from '@vivliostyle/cli/dist/schema/vivliostyleConfig.schema';
+import { readMetadata } from '@wooseopkim/vfm';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -37,15 +38,19 @@ const buildConfig = (target: Target) => ({
         fs.readdirSync(path.join(root, dir))
           .filter((file) => file.endsWith(`.${extension}`))
           .sort((a, b) => {
-            const x = filenamePattern.exec(a)?.[1];
-            const y = filenamePattern.exec(b)?.[1];
-            if (x === index) {
+            const filenames = [a, b].map((x) => filenamePattern.exec(x)?.[1]);
+            if (filenames[0] === index) {
               return Number.NEGATIVE_INFINITY;
             };
-            if (y === index) {
+            if (filenames[1] === index) {
               return Number.POSITIVE_INFINITY;
             };
-            return a.localeCompare(b);
+            const [p, q] = filenames.map((x) => fs.readFileSync(path.join(root, dir, `${x}.md`)))
+              .map((x) => readMetadata(x.toString()))
+              .map((x) => x.meta?.find((attributes) => attributes.find(({ name, value }) => name === 'name' && value === 'priority')))
+              .map((x) => x?.find(({ name }) => name === 'content'))
+              .map((x) => Number(x?.value ?? 0));
+            return (p ?? 0) - (q ?? 0);
           })
           .map((file) => {
             const filename = filenamePattern.exec(file)?.[1];
