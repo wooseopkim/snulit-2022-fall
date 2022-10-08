@@ -1,4 +1,5 @@
 /.vivliostyle
 /build
+/vivliostyle.config.js
 
 node_modules
