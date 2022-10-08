@@ -34,7 +34,18 @@ const buildConfig = (target: Target) => ({
     }
     const entries = fs.readdirSync(root)
       .filter((file) => fs.statSync(path.join(root, file)).isDirectory())
-      .flatMap((dir) => (
+      .map((dir) => ({
+        dir,
+        priority: (() => {
+          const index = fs.readFileSync(path.join(root, dir, 'index.md'));
+          const { meta } = readMetadata(index.toString());
+          const value = meta?.find((attributes) => attributes.find(({ name, value }) => name === 'name' && value === 'priority'))
+            ?.find(({ name }) => name === 'content')
+            ?.value
+          return Number(value ?? 0);
+        })()
+      }))
+      .flatMap(({ dir, priority }) => (
         fs.readdirSync(path.join(root, dir))
           .filter((file) => file.endsWith(`.${extension}`))
           .sort((a, b) => {
@@ -57,6 +68,7 @@ const buildConfig = (target: Target) => ({
             return ({
               path: path.join(root, dir, file),
               title: filename === index ? dir : filename,
+              priority,
             });
           })
       ))
