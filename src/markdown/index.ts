@@ -1,7 +1,7 @@
 import { readMetadata, VFM, type StringifyMarkdownOptions } from '@wooseopkim/vfm';
 import * as fs from 'fs';
 import vfile from 'vfile';
-import config from '../vivliostyle.config';
+import { raw as config } from '../vivliostyle.config';
 import convertParagraphs from './plugins/convert-paragraphs';
 import ignoreLists from './plugins/ignore-lists';
 

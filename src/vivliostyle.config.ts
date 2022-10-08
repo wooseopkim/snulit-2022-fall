@@ -67,7 +67,9 @@ const buildConfig = (target: Target) => ({
   },
 });
 
-// when used by TS, use raw assets
-export default buildConfig(raw);
-// when used by NodeJS, use compiled assets
-module.exports = buildConfig(compiled);
+export = {
+  // when used by vivliostyle, use compiled assets
+  ...buildConfig(compiled),
+  // when used by build scripts, use raw assets
+  raw: buildConfig(raw),
+};
