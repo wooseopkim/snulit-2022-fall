@@ -3,9 +3,6 @@
     "module": "commonjs",
     "noImplicitAny": true
   },
-  "files": [
-    "vivliostyle.config.ts"
-  ],
   "include": [
     "src/*"
   ]
