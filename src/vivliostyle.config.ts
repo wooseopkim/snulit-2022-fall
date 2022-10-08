@@ -1,3 +1,4 @@
+import { ArticleEntryObject } from '@vivliostyle/cli/dist/schema/vivliostyleConfig.schema';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -47,7 +48,11 @@ const buildConfig = (target: Target) => ({
             return a.localeCompare(b);
           })
       ))
-      .filter((file) => file.endsWith(`.${extension}`));
+      .filter((file) => file.endsWith(`.${extension}`))
+      .map((file) => ({ path: file } as Partial<ArticleEntryObject> & { priority: number }))
+      .concat({ rel: 'contents', theme: 'src/toc.css', priority: Number.MIN_SAFE_INTEGER + 1 })
+      .sort((a, b) => (a.priority ?? 0) - (b.priority ?? 0))
+      .map(({ priority, ...rest }) => ({ ...rest }));
   })(),
   output: [
     {
@@ -56,15 +61,13 @@ const buildConfig = (target: Target) => ({
     },
   ],
   workspaceDir: '.vivliostyle',
-  toc: false,
+  toc: true,
   vfm: {
     hardLineBreaks: true,
   },
 });
 
-module.exports = {
-  // when used by JS, use compiled assets
-  ...buildConfig(compiled),
-  // when used by TS, use raw assets
-  raw: buildConfig(raw),
-}
+// when used by TS, use raw assets
+export default buildConfig(raw);
+// when used by NodeJS, use compiled assets
+module.exports = buildConfig(compiled);

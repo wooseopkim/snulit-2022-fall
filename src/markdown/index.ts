@@ -1,11 +1,10 @@
 import { readMetadata, VFM, type StringifyMarkdownOptions } from '@wooseopkim/vfm';
 import * as fs from 'fs';
 import vfile from 'vfile';
-import mixed from '../vivliostyle.config';
+import config from '../vivliostyle.config';
 import convertParagraphs from './plugins/convert-paragraphs';
 import ignoreLists from './plugins/ignore-lists';
 
-const config = mixed.raw;
 const options: StringifyMarkdownOptions = {
   style: config.theme,
   title: config.title,
@@ -21,15 +20,15 @@ const options: StringifyMarkdownOptions = {
   ...config.vfm,
 };
 
-for (const file of config.entry) {
-  if (!file.endsWith('.md')) {
+for (const { path } of config.entry) {
+  if (!path?.endsWith('.md')) {
     continue;
   }
-  const buffer = fs.readFileSync(file)
+  const buffer = fs.readFileSync(path);
   const md = buffer.toString();
   const processor = VFM(options, readMetadata(md));
-  const virtualFile = vfile({ path: file, contents: md });
+  const virtualFile = vfile({ path, contents: md });
   const processed = processor.processSync(virtualFile);
   const result = String(processed);
-  fs.writeFileSync(file.replace(/\.md$/, '.html'), result);
+  fs.writeFileSync(path.replace(/\.md$/, '.html'), result);
 }
