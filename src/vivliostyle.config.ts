@@ -24,35 +24,43 @@ const buildConfig = (target: Target) => ({
   image: 'ghcr.io/vivliostyle/cli:5.6.2',
   entry: (() => {
     const { extension, root } = target;
-    const firstEntry = 'index';
-    const filenamePattern = /.+\/([^/.]+).\w+/;
+    const index = 'index';
+    const filenamePattern = /([^/.]+).\w+$/;
 
     if (!fs.existsSync(root)) {
       console.log(`root '${root}' does not exist.`);
       return [];
     }
-    return fs.readdirSync(root)
+    const entries = fs.readdirSync(root)
       .filter((file) => fs.statSync(path.join(root, file)).isDirectory())
       .flatMap((dir) => (
         fs.readdirSync(path.join(root, dir))
-          .map((file) => path.join(root, dir, file))
+          .filter((file) => file.endsWith(`.${extension}`))
           .sort((a, b) => {
             const x = filenamePattern.exec(a)?.[1];
             const y = filenamePattern.exec(b)?.[1];
-            if (x === firstEntry) {
+            if (x === index) {
               return Number.NEGATIVE_INFINITY;
             };
-            if (y === firstEntry) {
+            if (y === index) {
               return Number.POSITIVE_INFINITY;
             };
             return a.localeCompare(b);
           })
+          .map((file) => {
+            const filename = filenamePattern.exec(file)?.[1];
+            return ({
+              path: path.join(root, dir, file),
+              title: filename === index ? dir : filename,
+            });
+          })
       ))
-      .filter((file) => file.endsWith(`.${extension}`))
-      .map((file) => ({ path: file } as Partial<ArticleEntryObject> & { priority: number }))
-      .concat({ rel: 'contents', theme: 'src/toc.css', priority: Number.MIN_SAFE_INTEGER + 1 })
+      .map((entry) => entry as Partial<ArticleEntryObject> & { priority: number })
+      .concat({ rel: 'contents', theme: 'src/toc.css', priority: Number.MIN_SAFE_INTEGER + 1 }) // keep MIN_SAFE_INTEGER for the cover
       .sort((a, b) => (a.priority ?? 0) - (b.priority ?? 0))
       .map(({ priority, ...rest }) => ({ ...rest }));
+    console.log('Read entries:', entries);
+    return entries;
   })(),
   output: [
     {

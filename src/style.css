@@ -12,6 +12,7 @@ h1,
 h2,
 h3 {
   break-before: page;
+  display: inline-block;
 }
 
 p {
@@ -23,20 +24,31 @@ section.level3 > div > p {
   text-indent: 1.75ch;
 }
 
-.footnotes {
+.footnote {
   float: footnote;
 }
 
+.footnote::footnote-call {
+  content: '*';
+  margin-left: 0.5em;
+  vertical-align: super;
+  font-size: 70%;
+}
+
+.footnote::footnote-marker {
+  content: '*';
+  margin-right: 1em;
+  vertical-align: super;
+  font-size: 70%;
+}
+
+@-adapt-footnote-area ::before {
+  margin-inline-start: -1000px;
+  margin-inline-end: 0px;
+  margin-block-end: 2rem;
+}
+
 @media print {
-  .footnote-ref {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .footnote-back {
-    visibility: hidden;
-  }
-
   @page :first {
     counter-reset: p;
   }
