@@ -19,7 +19,7 @@ const buildConfig = (target: Target) => ({
   author: '서울대학교 총문학연구회',
   language: 'ko',
   size: 'A5',
-  theme: 'style.css',
+  theme: 'src/style.css',
   image: 'ghcr.io/vivliostyle/cli:5.6.2',
   entry: (() => {
     const { extension, root } = target;

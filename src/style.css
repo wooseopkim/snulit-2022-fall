@@ -36,4 +36,24 @@ section.level3 > div > p {
   .footnote-back {
     visibility: hidden;
   }
+
+  @page :first {
+    counter-reset: p;
+  }
+  
+  @page {
+    counter-increment: p;
+  }
+
+  @page :left {
+    @bottom-left {
+      content: counter(p);
+    }
+  }
+  
+  @page :right {
+    @bottom-right {
+      content: counter(p);
+    }
+  }
 }
