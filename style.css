@@ -1,7 +1,7 @@
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
 :root {
-  font-size: 21px;
+  font-size: 18px;
 }
 
 html {
@@ -16,6 +16,11 @@ h3 {
 
 p {
   line-height: 1.6em;
+  margin: 0;
+}
+
+section.level3 > div > p {
+  text-indent: 1.75ch;
 }
 
 .footnotes {
