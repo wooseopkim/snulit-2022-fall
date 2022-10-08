@@ -36,27 +36,31 @@ body.poem section.level3 > div {
   margin-bottom: 1em;
 }
 
-.footnote {
+.footnote /* real footnotes */,
+.endnote /* endnotes */{
   float: footnote;
 }
 
-.footnote::footnote-call {
+.footnote::footnote-call /* real footnotes */,
+.endnote-call::before /* endnotes */ {
   content: '*';
   margin-left: 0.5em;
   vertical-align: super;
   font-size: 70%;
 }
 
-.footnote::footnote-marker {
+.footnote::footnote-marker /* real footnotes */,
+.endnote::before /* endnotes */ {
   content: '*';
   margin-right: 1em;
   vertical-align: super;
   font-size: 70%;
 }
 
+/* special rule for footnote dividers */
 @-adapt-footnote-area ::before {
-  margin-inline-start: -1000px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   margin-block-end: 2rem;
 }
 
@@ -79,5 +83,14 @@ body.poem section.level3 > div {
     @bottom-right {
       content: counter(p);
     }
+  }
+
+  a.endnote-call {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a.endnote-back {
+    visibility: hidden;
   }
 }
