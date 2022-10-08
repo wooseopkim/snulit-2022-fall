@@ -1,4 +1,4 @@
-import { readMetadata, VFM, type StringifyMarkdownOptions } from '@wooseopkim/vfm';
+import { readMetadata, VFM, type Metadata, type StringifyMarkdownOptions } from '@wooseopkim/vfm';
 import * as fs from 'fs';
 import vfile from 'vfile';
 import { raw as config } from '../vivliostyle.config';
@@ -26,7 +26,20 @@ for (const { path } of config.entry) {
   }
   const buffer = fs.readFileSync(path);
   const md = buffer.toString();
-  const processor = VFM(options, readMetadata(md));
+  const originalMetadata = readMetadata(md);
+  const metadata: Metadata = {
+    ...(originalMetadata ?? {}),
+    meta: [
+      ...(originalMetadata.meta ?? []),
+      [
+        {
+          name: 'author',
+          value: /([^/]+)\/[^/]+\.\w+/.exec(path)?.[1] ?? '',
+        },
+      ],
+    ],
+  };
+  const processor = VFM(options, metadata);
   const virtualFile = vfile({ path, contents: md });
   const processed = processor.processSync(virtualFile);
   const result = String(processed);
