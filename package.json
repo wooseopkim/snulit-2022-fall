@@ -6,7 +6,7 @@
     "clean:html": "rm assets/**/*.html",
     "clean:config": "rm vivliostyle.config.js",
     "clean:pdf": "rm -rf .vivliostyle; rm build/*",
-    "clean": "npm run clean:config && npm run clean:html && npm run clean:pdf",
+    "clean": "npm run clean:config; npm run clean:html; npm run clean:pdf",
     "build:html": "esno ./src/markdown/index.ts",
     "build:config": "tsc ./src/vivliostyle.config.ts --module commonjs --esModuleInterop true --outDir .",
     "build:pdf": "vivliostyle build",
