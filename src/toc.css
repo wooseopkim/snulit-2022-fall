@@ -5,3 +5,20 @@ h2 {
   height: 0;
   margin: 0;
 }
+
+nav ol {
+  padding: 0;
+  list-style: none;
+}
+
+nav ol li a::after {
+  content: target-counter(attr(href url), p);
+  float: right;
+}
+
+@media print {
+  nav ol li a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
