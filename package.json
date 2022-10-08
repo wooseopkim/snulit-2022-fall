@@ -10,7 +10,8 @@
     "build:html": "esno ./src/markdown/index.ts",
     "build:config": "tsc ./src/vivliostyle.config.ts --module commonjs --esModuleInterop true --outDir .",
     "build:pdf": "vivliostyle build",
-    "build": "npm run build:config && npm run build:html && npm run build:pdf"
+    "build": "npm run build:config && npm run build:html && npm run build:pdf",
+    "preview": "npm run build:config && npm run build:html && vivliostyle preview"
   },
   "author": "Wooseop Kim",
   "dependencies": {
