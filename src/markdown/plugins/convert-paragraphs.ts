@@ -22,22 +22,12 @@ function convertParagraphs() {
           return [SKIP, index];
         }
 
-        const previousSibling = parent.children[index - 1];
-        const newSiblings = (previousSibling as Element)?.children;
-        const newPreviousSibling = newSiblings?.[newSiblings?.length - 1];
-        if (previousSibling?.data?.converted) {
-          if (newPreviousSibling?.type !== 'text' || child.type !== 'text') {
-            const span = h('span', child);
-            newSiblings.push(span);
-            parent.children.splice(index, 1);
-            return [SKIP, index];
-          }
-        }
-
-        if (child.type === 'text') {
-          const p = h('p', child['value'] as string);
+        if (child.type === 'text' || is(child, 'em')) {
+          const p = h('p', child);
           p.data = { converted: true };
           parent.children[index] = p;
+        } else {
+          console.warn('Unprocessable child:', child);
         }
       });
     });
