@@ -11,7 +11,9 @@
     "build:config": "tsc ./src/vivliostyle.config.ts --module commonjs --esModuleInterop true --outDir .",
     "build:pdf": "vivliostyle build",
     "build": "npm run build:config && npm run build:html && npm run build:pdf",
-    "preview": "npm run build:config && npm run build:html && vivliostyle preview"
+    "preview:html": "nodemon --watch ./src --ext ts --exec esno ./src/markdown/index.ts",
+    "preview:pdf": "vivliostyle preview",
+    "preview": "npm run build:config && npm run preview:html & npm run preview:pdf"
   },
   "author": "Wooseop Kim",
   "dependencies": {
@@ -21,5 +23,8 @@
     "esno": "^0.16.3",
     "typescript": "^4.8.4",
     "vfile": "^4.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
