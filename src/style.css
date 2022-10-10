@@ -18,6 +18,15 @@
   font-size: 18px;
 }
 
+html,
+body,
+section {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   text-align: justify;
 }
@@ -55,7 +64,10 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   break-before: page;
   display: inline-block;
 }
@@ -65,8 +77,24 @@ p {
   margin: 0;
 }
 
+section.level2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+section.level2 > h2,
+section.level3 > h3 {
+  margin-block-start: 5rem;
+  margin-block-end: 1rem;
+}
+
+section.level3 > h3 {
+  margin-inline-start: 1rem;
+}
+
 section.level3 > div > p {
-  text-indent: 1.75ch;
+  text-indent: 1rem;
 }
 
 body.poem section.level3 > div {
