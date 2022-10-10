@@ -135,7 +135,7 @@ section.level3 > div > p {
   text-indent: 1rem;
 }
 
-body.poem section.level3 > div {
+section.level3 > div {
   margin-bottom: 1em;
 }
 
