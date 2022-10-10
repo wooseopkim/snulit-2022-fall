@@ -1,0 +1,49 @@
+@import url('./style.css');
+
+h1,
+h2 {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+nav ol {
+  padding: 0;
+  list-style: none;
+}
+
+nav ol li {
+  break-inside: avoid;
+}
+
+nav ol li a:not([href$="index.html"]) {
+  display: inline-flex;
+  width: 100%;
+  break-inside: avoid;
+  align-items: baseline;
+  margin-left: 1em;
+}
+
+nav ol li a:not([href$="index.html"])::before {
+  order: 1;
+  content: '';
+  flex: auto;
+  border-bottom: 1px solid lightgrey;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+nav ol li a:not([href$="index.html"])::after {
+  order: 2;
+  content: target-counter(attr(href url), p);
+  text-align: right;
+  align-self: flex-end;
+}
+
+@media print {
+  nav ol li a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
