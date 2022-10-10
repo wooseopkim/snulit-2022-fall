@@ -2,10 +2,7 @@
 
 h1,
 h2 {
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  margin: 0;
+  display: none;
 }
 
 nav ol {
@@ -17,28 +14,26 @@ nav ol li {
   break-inside: avoid;
 }
 
+nav ol li a {
+  display: inline-block;
+  margin-block-end: 0.5em;
+}
+
+nav ol li:not(:first-of-type) a[href$="index.html"] {
+  margin-block-start: 1em;
+}
+
 nav ol li a:not([href$="index.html"]) {
-  display: inline-flex;
-  width: 100%;
-  break-inside: avoid;
-  align-items: baseline;
-  margin-left: 1em;
+  margin-inline-start: 1em;
 }
 
 nav ol li a:not([href$="index.html"])::before {
-  order: 1;
-  content: '';
-  flex: auto;
-  border-bottom: 1px solid lightgrey;
-  margin-left: 1px;
-  margin-right: 1px;
+  content: '•';
+  margin-inline-end: 0.25rem;
 }
 
 nav ol li a:not([href$="index.html"])::after {
-  order: 2;
-  content: target-counter(attr(href url), p);
-  text-align: right;
-  align-self: flex-end;
+  content: ', ' target-counter(attr(href url), p);
 }
 
 @media print {
