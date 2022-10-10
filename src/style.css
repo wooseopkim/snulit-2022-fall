@@ -1,10 +1,24 @@
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
+@font-face {
+  font-family: 'Hahmlet-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoSerifKR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-size: 18px;
 }
 
-html {
+body {
   text-align: justify;
 }
 
@@ -14,6 +28,29 @@ title {
 
 meta[name=author] {
   string-set: doc-author attr(content);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav#toc ol li a {
+  font-family: 'Hahmlet-Regular';
+}
+
+@page {
+  @bottom-left {
+    font-family: 'Hahmlet-Regular';
+  }
+  @bottom-right {
+    font-family: 'Hahmlet-Regular';
+  }
+}
+
+body {
+  font-family: 'NotoSerifKR';
 }
 
 h1,
