@@ -18,6 +18,39 @@
   font-size: 18px;
 }
 
+@page {
+  margin-top: 12mm;
+  margin-bottom: 18mm;
+}
+
+@page :first {
+  counter-reset: p;
+}
+
+@page {
+  counter-increment: p;
+}
+
+@page :left {
+  margin-left: 14mm;
+  margin-right: 16mm;
+
+  @bottom-left {
+    content: string(doc-author) ' — ' string(doc-title);
+    font-size: 80%;
+  }
+}
+
+@page :right {
+  margin-left: 16mm;
+  margin-right: 14mm;
+
+  @bottom-right {
+    content: counter(p);
+    font-size: 80%;
+  }
+}
+
 html,
 body,
 section {
@@ -135,26 +168,6 @@ body.poem section.level3 > div {
 }
 
 @media print {
-  @page :first {
-    counter-reset: p;
-  }
-  
-  @page {
-    counter-increment: p;
-  }
-
-  @page :left {
-    @bottom-left {
-      content: string(doc-author) '-' string(doc-title);
-    }
-  }
-  
-  @page :right {
-    @bottom-right {
-      content: counter(p);
-    }
-  }
-
   a.endnote-call {
     text-decoration: none;
     color: inherit;
