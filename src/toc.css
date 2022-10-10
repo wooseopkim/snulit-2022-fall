@@ -1,5 +1,19 @@
 @import url('./style.css');
 
+body {
+  page: toc;
+}
+
+@page toc {
+  @bottom-left {
+    content: normal;
+  }
+
+  @bottom-right {
+    content: normal;
+  }
+}
+
 h1,
 h2 {
   display: none;

@@ -2,7 +2,7 @@
 # Number.MIN_SAFE_INTEGER + 1
 priority: -9007199254740990
 body:
-  class: poem
+  class: preface
 ---
 
 ### 여는 말

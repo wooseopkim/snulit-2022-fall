@@ -51,6 +51,30 @@
   }
 }
 
+body.preface {
+  page: preface;
+}
+
+@page preface {
+  @bottom-left {
+    content: normal;
+  }
+
+  @bottom-right {
+    content: normal;
+  }
+}
+
+body.author {
+  page: author;
+}
+
+@page author {
+  @bottom-left {
+    content: normal;
+  }
+}
+
 html,
 body,
 section {
