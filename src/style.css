@@ -77,6 +77,11 @@ p {
   margin: 0;
 }
 
+hr {
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
+}
+
 section.level2 {
   display: flex;
   flex-direction: column;
