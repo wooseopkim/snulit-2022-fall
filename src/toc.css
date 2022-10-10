@@ -1,3 +1,5 @@
+@import url('./style.css');
+
 h1,
 h2 {
   visibility: hidden;
