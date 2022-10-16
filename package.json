@@ -13,7 +13,7 @@
     "build": "npm run build:config && npm run build:html && npm run build:pdf",
     "preview:html": "nodemon --watch ./src --ext ts --exec esno ./src/markdown/index.ts",
     "preview:pdf": "vivliostyle preview",
-    "preview": "npm run build:config && npm run preview:html & npm run preview:pdf"
+    "preview": "nodemon --watch ./ --ext ts,md --exec esno ./scripts/preview.ts"
   },
   "author": "Wooseop Kim",
   "dependencies": {
