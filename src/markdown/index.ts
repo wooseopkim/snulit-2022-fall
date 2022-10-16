@@ -2,8 +2,8 @@ import { readMetadata, VFM, type Metadata, type StringifyMarkdownOptions } from 
 import * as fs from 'fs';
 import vfile from 'vfile';
 import { raw as config } from '../vivliostyle.config';
-import convertParagraphs from './plugins/convert-paragraphs';
 import ignoreLists from './plugins/ignore-lists';
+import processHtml from './plugins/process-html';
 
 const options: StringifyMarkdownOptions = {
   style: config.theme,
@@ -14,7 +14,7 @@ const options: StringifyMarkdownOptions = {
       [ignoreLists],
     ],
     postHtml: [
-      [convertParagraphs],
+      [processHtml],
     ],
   },
   ...config.vfm,

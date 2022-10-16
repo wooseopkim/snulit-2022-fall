@@ -152,12 +152,12 @@ section.level3 > h3 {
   margin-block-end: 1rem;
 }
 
-section.level3 > h3 {
-  margin-inline-start: 1rem;
-}
-
 section.level3 > div > p {
   text-indent: 1rem;
+}
+
+section.level3 > div > p .footnote {
+  text-indent: 0;
 }
 
 section.level3 > div {
