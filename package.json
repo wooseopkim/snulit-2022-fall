@@ -5,7 +5,7 @@
   "scripts": {
     "clean:html": "rm assets/**/*.html",
     "clean:config": "rm vivliostyle.config.js",
-    "clean:pdf": "rm -rf .vivliostyle; rm build/*",
+    "clean:pdf": "rm -rf .vivliostyle; yes | rm -rf build/*",
     "clean": "npm run clean:config; npm run clean:html; npm run clean:pdf",
     "build:html": "esno ./src/markdown/index.ts",
     "build:config": "tsc ./src/vivliostyle.config.ts --module commonjs --esModuleInterop true --outDir .",
