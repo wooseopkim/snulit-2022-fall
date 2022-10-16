@@ -164,24 +164,30 @@ section.level3 > div {
   margin-bottom: 1em;
 }
 
-.footnote /* real footnotes */,
-.endnote /* endnotes */{
+.footnote,
+.endnote {
   float: footnote;
+  font-size: 70%;
+  opacity: 0.9;
 }
 
-.footnote::footnote-call /* real footnotes */,
-.endnote-call::before /* endnotes */ {
+.footnote::footnote-call,
+.endnote-call::before {
   content: '*';
-  margin-left: 0.5em;
   vertical-align: super;
   font-size: 70%;
 }
 
-.footnote::footnote-marker /* real footnotes */,
-.endnote::before /* endnotes */ {
+h3 + .footnote::footnote-call,
+h3 + .endnote::before {
+  font-weight: bolder;
+  font-size: 1.17em;
+}
+
+.footnote::footnote-marker,
+.endnote::before {
   content: '*';
-  margin-right: 1em;
-  vertical-align: super;
+  margin-right: 0.5em;
   font-size: 70%;
 }
 
@@ -189,7 +195,8 @@ section.level3 > div {
 @-adapt-footnote-area ::before {
   margin-inline-start: 0;
   margin-inline-end: 0;
-  margin-block-end: 2rem;
+  margin-block-end: 0;
+  border: none;
 }
 
 @media print {
