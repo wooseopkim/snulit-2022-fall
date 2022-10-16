@@ -87,6 +87,7 @@ const buildConfig = (target: Target) => ({
   ],
   workspaceDir: '.vivliostyle',
   toc: true,
+  tocTitle: '목차',
   vfm: {
     hardLineBreaks: true,
   },

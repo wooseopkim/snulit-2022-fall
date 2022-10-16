@@ -14,9 +14,12 @@ body {
   }
 }
 
-h1,
-h2 {
+h1 {
   display: none;
+}
+
+h2 {
+  font-size: 1.17em;
 }
 
 nav ol {

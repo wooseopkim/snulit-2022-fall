@@ -146,6 +146,7 @@ section.level2 {
   text-align: end;
 }
 
+nav#toc > h2,
 section.level2 > h2,
 section.level3 > h3 {
   margin-block-start: 5rem;
