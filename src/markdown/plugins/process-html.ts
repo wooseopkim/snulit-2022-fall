@@ -5,7 +5,7 @@ import { Parent } from 'unist';
 import visit, { SKIP } from 'unist-util-visit';
 
 export default function processHtml() {
-  return (tree: Root) => {
+  return (tree: Node) => {
     visit<Element>(tree, 'element', removeEmpty);
     visit<Element>(tree, 'element', buildDivs.bind(undefined, tree));
     visit<Element>(tree, 'element', markParagraphsWithNotes);
