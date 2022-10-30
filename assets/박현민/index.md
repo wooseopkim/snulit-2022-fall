@@ -1,4 +1,5 @@
 ---
+priority: 8
 body:
   class: author
 ---
