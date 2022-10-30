@@ -23,14 +23,6 @@
   margin-bottom: 18mm;
 }
 
-@page :first {
-  counter-reset: p;
-}
-
-@page {
-  counter-increment: p;
-}
-
 @page :left {
   margin-left: 14mm;
   margin-right: 16mm;
@@ -46,7 +38,7 @@
   margin-right: 14mm;
 
   @bottom-right {
-    content: counter(p);
+    content: counter(page);
     font-size: 80%;
   }
 }
@@ -71,6 +63,20 @@ body.author {
 
 @page author {
   @bottom-left {
+    content: normal;
+  }
+}
+
+body.meta {
+  page: meta;
+}
+
+@page meta {
+  @bottom-left {
+    content: normal;
+  }
+
+  @bottom-right {
     content: normal;
   }
 }

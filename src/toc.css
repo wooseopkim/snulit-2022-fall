@@ -36,21 +36,27 @@ nav ol li a {
   margin-block-end: 0.5em;
 }
 
-nav ol li:not(:first-of-type) a[href$="index.html"] {
+nav ol li:not(:first-of-type) a[href$="/index.html"] {
   margin-block-start: 1em;
 }
 
-nav ol li a:not([href$="index.html"]) {
+nav ol li a:not([href$="/index.html"]) {
   margin-inline-start: 1em;
 }
 
-nav ol li a:not([href$="index.html"])::before {
+nav ol li a:not([href$="/index.html"])::before {
   content: '•';
   margin-inline-end: 0.25rem;
 }
 
-nav ol li a:not([href$="index.html"])::after {
-  content: ', ' target-counter(attr(href url), p);
+nav ol li a:not([href$="/index.html"])::after {
+  content: ', ' target-counter(attr(href url), page);
+}
+
+nav ol li a[href$="/cover.html"],
+nav ol li a[href$="/title.html"],
+nav ol li a[href$="/blank.html"] {
+  display: none;
 }
 
 @media print {

@@ -76,13 +76,23 @@ const buildConfig = (target: Target) => ({
       .concat({ rel: 'contents', theme: 'src/toc.css', priority: Number.MIN_SAFE_INTEGER + 1 }) // keep MIN_SAFE_INTEGER for the cover
       .sort((a, b) => (a.priority ?? 0) - (b.priority ?? 0))
       .map(({ priority, ...rest }) => ({ ...rest }));
-    console.log('Read entries:', entries);
-    return entries;
+    return [
+      {
+        path: path.join(root, 'cover.md'),
+        theme: 'src/cover.css',
+      },
+      {
+        path: path.join(root, 'blank.md'),
+      },
+      {
+        path: path.join(root, 'title.md'),
+      },
+      ...entries,
+    ];
   })(),
   output: [
     {
       path: './build/book.pdf',
-      renderMode: 'docker',
     },
   ],
   workspaceDir: '.vivliostyle',

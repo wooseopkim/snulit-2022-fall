@@ -1,0 +1,20 @@
+@page {
+  margin: 0;
+}
+
+figure {
+  background-image: url('https://cdn.pixabay.com/photo/2016/03/28/12/35/cat-1285634_960_720.png');
+  background-repeat: no-repeat;
+  background-size: calc(3 * 297mm) calc(3 * 210mm);
+  background-position-x: -15cm;
+  background-position-y: -17cm;
+  filter: grayscale();
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  max-width: 210mm;
+  max-height: 297mm;
+}
