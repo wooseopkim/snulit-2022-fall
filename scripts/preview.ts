@@ -1,5 +1,10 @@
 import { execSync } from "child_process";
 
-execSync('npm run build:config');
-execSync('npm run build:html');
-execSync('npm run preview:pdf');
+execute('npm run build:config');
+execute('npm run build:html');
+execute('npm run preview:pdf');
+
+function execute(command: string) {
+  console.log(`executing ${command}...`);
+  execSync(command);
+}
