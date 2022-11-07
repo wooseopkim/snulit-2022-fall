@@ -1,4 +1,4 @@
-### snulit-book-content
+# snulit-book-content
 
 This repository contains code for content design of books from "총문학연구회", a Seoul National University students' literature club.
 
